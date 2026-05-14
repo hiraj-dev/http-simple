@@ -1,14 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 // این آدرس رو با آدرس سرور شخصی خودت عوض کن
-const TARGET_SERVER = 'https://your-personal-server.com';
+const TARGET_SERVER = 'http://141.11.21.189';
 
 export function middleware(request: NextRequest) {
-  // هر مسیری که با /relay شروع بشه رو بگیر
-  if (request.nextUrl.pathname.startsWith('/relay')) {
+  if (request.nextUrl.pathname.startsWith('/api/download')) {
     // مسیر رو از /relay جدا کن و به سرور مقصد بچسبون
     // مثال: /relay/api/data -> /api/data
-    const targetPath = request.nextUrl.pathname.replace('/relay', '');
+    const targetPath = request.nextUrl.pathname.replace('/api', '');
     const targetUrl = new URL(targetPath + request.nextUrl.search, TARGET_SERVER);
 
     console.log(`Relaying ${request.method} ${request.nextUrl.pathname} to ${targetUrl}`);
@@ -28,5 +27,5 @@ export function middleware(request: NextRequest) {
 
 // فقط مسیرهای /relay رو پردازش کن
 export const config = {
-  matcher: '/relay/:path*',
+  matcher: '/api/download/:path*',
 };
