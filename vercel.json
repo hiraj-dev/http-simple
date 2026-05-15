@@ -1,5 +1,14 @@
 {
-  "buildCommand": "next build",
-  "outputDirectory": ".next",
-  "framework": "nextjs"
+  "version": 2,
+  "name": "sni-fast-api",
+  "functions": {
+    "api/index.js": {
+      "memory": 128,
+      "maxDuration": 60
+    }
+  },
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/api/index.js" }
+  ],
+  "trailingSlash": false
 }
