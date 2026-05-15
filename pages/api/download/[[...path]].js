@@ -1,4 +1,4 @@
-const TARGET_SERVER = 'http://141.11.21.189';
+const TARGET_SERVER = 'https://nl.uzicoders.ir';
 
 export default async function handler(req, res) {
   try {
